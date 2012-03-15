@@ -2,18 +2,27 @@ package test.scala
 
 import org.scalatest.FunSuite
 
-class InVar[T]     { override def toString = "InVar" }
-class CoVar[+T]     { override def toString = "CoVar" }
-class ContraVar[-T] { override def toString = "ContraVar"}
-
 /**
  Exercise to understand type variance from
  http://oldfashionedsoftware.com/2008/08/26/variance-basics-in-java-and-scala/
+
+ Type variance helps answers quesitons like:
+
+ is List[String] a subtype of List[Object] because String is a subtype of Object?
 
  My goal is to understand this scala type:
 
  trait CanBuildFrom [-From, -Elem, +To] extends AnyRef
 */
+
+// Invariance
+class InVar[T]     { override def toString = "InVar" }
+// Covariance
+class CoVar[+T]     { override def toString = "CoVar" }
+// Contravariance
+class ContraVar[-T] { override def toString = "ContraVar"}
+
+
 class VarianceTest extends FunSuite{
 
     test("assignment works when param types are equal"){
